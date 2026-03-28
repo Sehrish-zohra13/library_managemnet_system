@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Book Management | Digital Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#58e7ab",
+              "secondary-fixed": "#69f6b8",
+              "surface-container-highest": "#192540",
+              "primary": "#a3a6ff",
+              "tertiary-fixed": "#ff8ed2",
+              "on-tertiary-fixed": "#3b002b",
+              "on-background": "#dee5ff",
+              "on-secondary": "#005a3c",
+              "secondary-container": "#006c49",
+              "surface-container-high": "#141f38",
+              "surface": "#060e20",
+              "surface-dim": "#060e20",
+              "on-error": "#490013",
+              "background": "#060e20",
+              "on-surface": "#dee5ff",
+              "error-dim": "#d73357",
+              "on-primary-fixed": "#000000",
+              "inverse-on-surface": "#4d556b",
+              "on-secondary-fixed-variant": "#006544",
+              "surface-variant": "#192540",
+              "on-surface-variant": "#a3aac4",
+              "on-tertiary": "#701455",
+              "on-tertiary-container": "#63054a",
+              "inverse-primary": "#494bd7",
+              "primary-fixed": "#9396ff",
+              "secondary": "#69f6b8",
+              "outline-variant": "#40485d",
+              "surface-container-low": "#091328",
+              "on-primary-container": "#0a0081",
+              "primary-fixed-dim": "#8387ff",
+              "inverse-surface": "#faf8ff",
+              "primary-container": "#9396ff",
+              "error-container": "#a70138",
+              "surface-container": "#0f1930",
+              "outline": "#6d758c",
+              "primary-dim": "#6063ee",
+              "error": "#ff6e84",
+              "surface-tint": "#a3a6ff",
+              "on-primary": "#0f00a4",
+              "on-secondary-fixed": "#00452d",
+              "surface-container-lowest": "#000000",
+              "on-secondary-container": "#e1ffec",
+              "on-error-container": "#ffb2b9",
+              "tertiary-dim": "#ef81c4",
+              "on-tertiary-fixed-variant": "#6e1354",
+              "tertiary-container": "#ff8ed2",
+              "tertiary": "#ffa5d9",
+              "tertiary-fixed-dim": "#ef81c4",
+              "secondary-dim": "#58e7ab",
+              "surface-bright": "#1f2b49",
+              "on-primary-fixed-variant": "#0e009d"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #060e20; color: #dee5ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .loom-scroll {
+            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+        }
+        .glass-panel {
+            background: rgba(25, 37, 64, 0.6);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/30">
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-screen w-64 fixed left-0 top-0 no-border bg-[#091328] relative z-50 flex flex-col py-6">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-dim flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary-fixed">auto_stories</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-[#dee5ff] tracking-tighter font-headline">Digital Curator</h1>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-[0.2em] font-medium">Management System</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-[#dee5ff]/60 hover:text-[#dee5ff] py-3 px-4 ml-2 mr-4 flex items-center gap-3 transition-colors font-manrope font-semibold tracking-tight hover:bg-[#0f1930] hover:text-indigo-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-[#dee5ff]/60 hover:text-[#dee5ff] py-3 px-4 ml-2 mr-4 flex items-center gap-3 transition-colors font-manrope font-semibold tracking-tight hover:bg-[#0f1930] hover:text-indigo-300" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+                Books
+            </a>
+<a class="text-[#dee5ff]/60 hover:text-[#dee5ff] py-3 px-4 ml-2 mr-4 flex items-center gap-3 transition-colors font-manrope font-semibold tracking-tight hover:bg-[#0f1930] hover:text-indigo-300" href="#">
+<span class="material-symbols-outlined">person</span>
+                Profile
+            </a>
+<a class="text-indigo-400 bg-[#1f2b49]/50 rounded-lg ml-2 mr-4 py-3 px-4 flex items-center gap-3 transition-all font-manrope font-semibold tracking-tight" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+                Admin
+            </a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<button class="mx-4 mb-6 py-3 px-4 bg-gradient-to-r from-primary to-primary-dim text-on-primary font-headline font-bold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">add</span>
+                Add New Book
+            </button>
+<a class="text-[#dee5ff]/60 hover:text-[#dee5ff] py-3 px-4 ml-2 mr-4 flex items-center gap-3 transition-colors font-manrope font-semibold tracking-tight" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+<a class="text-[#dee5ff]/60 hover:text-[#dee5ff] py-3 px-4 ml-2 mr-4 flex items-center gap-3 transition-colors font-manrope font-semibold tracking-tight" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 no-border border-b border-[#40485d]/20 bg-[#060e20]/80 backdrop-blur-xl z-40 flex justify-between items-center px-8">
+<div class="flex items-center gap-8">
+<h2 class="hidden md:block text-lg font-black text-[#dee5ff] font-headline">The Digital Curator</h2>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm group-focus-within:text-primary transition-colors">search</span>
+<input class="bg-surface-container-lowest border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-on-surface-variant/50" placeholder="Search inventory..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="flex items-center gap-6">
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-colors font-inter text-sm font-medium" href="#">Analytics</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-colors font-inter text-sm font-medium" href="#">Reservations</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-colors font-inter text-sm font-medium" href="#">Overdue</a>
+</nav>
+<div class="flex items-center gap-2">
+<button class="hover:bg-[#1f2b49]/40 rounded-full p-2 transition-all relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span>
+</button>
+<button class="hover:bg-[#1f2b49]/40 rounded-full p-2 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30 ml-2">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional man in a clean studio setting with soft directional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfti5GuhkZjSNwbzeB5PAHRcNBTbt50cvPap9Tv3C3ysIHgKBmktsuk8uUGg34j12EciY8ihYaHd8MPp6YjokR4qLZh25nsnufUCVfUO3_uWVLu5GrIDGOxXs0afRvUUKj1AIDP8VaEisAYgiu0ydV5-w1Q6cEaLiWhem1vWayOTsQZaDetGnswtsook0xlcGTdUfq9jLpsPOgtI29Ya2xXxvK7pC0uSt1SA61Dmc4PXg5yd_WfQhu2MsRbO0s0Z6sSiA-yds-qPQ"/>
+</div>
+</div>
+</div>
+</header>
+<div class="pt-24 px-10 pb-12">
+<!-- Header Section -->
+<div class="mb-10">
+<h3 class="text-4xl font-headline font-extrabold tracking-tight mb-2">Book Inventory Management</h3>
+<p class="text-on-surface-variant font-body">Manage the library's digital and physical assets across all global branches.</p>
+</div>
+<!-- Dashboard Stats Bento Grid -->
+<div class="grid grid-cols-12 gap-6 mb-10">
+<div class="col-span-12 md:col-span-8 grid grid-cols-3 gap-6">
+<div class="bg-surface-container rounded-xl p-6 border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl">menu_book</span>
+</div>
+<p class="text-on-surface-variant text-sm font-medium mb-1">Total Titles</p>
+<h4 class="text-3xl font-headline font-bold">12,482</h4>
+<div class="mt-4 flex items-center gap-1 text-secondary-fixed-dim text-xs">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+<span>+4.2% from last month</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-6 border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl">lock_open</span>
+</div>
+<p class="text-on-surface-variant text-sm font-medium mb-1">Checked Out</p>
+<h4 class="text-3xl font-headline font-bold">3,891</h4>
+<div class="mt-4 flex items-center gap-1 text-tertiary-dim text-xs">
+<span class="material-symbols-outlined text-xs">sync_alt</span>
+<span>31% turnover rate</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-6 border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl">report</span>
+</div>
+<p class="text-on-surface-variant text-sm font-medium mb-1">Overdue Items</p>
+<h4 class="text-3xl font-headline font-bold text-error-dim">124</h4>
+<div class="mt-4 flex items-center gap-1 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-xs">warning</span>
+<span>Action required</span>
+</div>
+</div>
+</div>
+<!-- Activity Monitor Card -->
+<div class="col-span-12 md:col-span-4 bg-surface-container rounded-xl border border-outline-variant/10 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant/10 bg-surface-container-high/50 flex justify-between items-center">
+<h5 class="font-headline font-bold text-sm">Activity Monitor</h5>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] rounded-full font-bold uppercase tracking-wider">Live</span>
+</div>
+<div class="flex-1 loom-scroll overflow-y-auto p-4 space-y-4">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">edit</span>
+</div>
+<div>
+<p class="text-xs text-on-surface"><span class="font-bold">Librarian Sarah</span> edited "The Midnight Library"</p>
+<p class="text-[10px] text-on-surface-variant">2 minutes ago</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-sm">add_circle</span>
+</div>
+<div>
+<p class="text-xs text-on-surface"><span class="font-bold">Admin Marcus</span> added 5 new ISBN entries</p>
+<p class="text-[10px] text-on-surface-variant">14 minutes ago</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error text-sm">delete</span>
+</div>
+<div>
+<p class="text-xs text-on-surface"><span class="font-bold">System</span> removed duplicate entry #8291</p>
+<p class="text-[10px] text-on-surface-variant">45 minutes ago</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">history</span>
+</div>
+<div>
+<p class="text-xs text-on-surface"><span class="font-bold">User J. Doe</span> reserved "Dune: Part Two"</p>
+<p class="text-[10px] text-on-surface-variant">1 hour ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Inventory Table Section -->
+<div class="bg-surface-container rounded-2xl border border-outline-variant/10 overflow-hidden shadow-2xl">
+<div class="p-6 bg-surface-container-high/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<h4 class="text-xl font-headline font-bold">Inventory List</h4>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-full bg-surface-bright text-xs font-medium border border-outline-variant/20 flex items-center gap-2 hover:bg-surface-variant">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                                All Branches
+                            </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-bright text-xs font-medium border border-outline-variant/20 flex items-center gap-2 hover:bg-surface-variant">
+<span class="material-symbols-outlined text-sm">sort</span>
+                                Recently Added
+                            </button>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2.5 rounded-xl bg-surface-bright border border-outline-variant/20 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">file_download</span>
+</button>
+<button class="p-2.5 rounded-xl bg-surface-bright border border-outline-variant/20 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">print</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest/50 text-on-surface-variant text-[11px] uppercase tracking-widest font-bold">
+<th class="px-6 py-4">Title &amp; Author</th>
+<th class="px-6 py-4">ISBN-13</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4">Category</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Table Row 1 -->
+<tr class="hover:bg-surface-bright/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-14 bg-surface-container-highest rounded-md overflow-hidden shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="minimalist book cover design with deep blue tones and abstract geometric shapes in gold foil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAepoqDIb_5nnYXuLNgIieEZwPQk-cWVHNxbzwyKUJDyMVJYJosqzFsOB2zOIt4TqH9s4OF0Yu31NtnxuIcYaVY5yBwfaD5oByIH5ndthtRQ3jYeoUDKbg64WdWj6K1sSUzs1RbjP7U69ZJajIRWJtZRb277gir41Jtzw7OFsXQs5QrVDyJx9sVGdgjNHvnJKTFcaAWaWLMqHZNIFNJf9ZP6XcKPiQF98_MPIMqq9HLxJTyYAeKtt0A4uayzzXNT7jDs3XuwmYhu9k"/>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface group-hover:text-primary transition-colors">The Infinite Perspective</p>
+<p class="text-xs text-on-surface-variant">Julianne V. Sterling</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-on-surface-variant">978-3-16-148410-0</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-secondary-container/20 text-secondary text-[10px] font-bold uppercase">Available</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs bg-surface-bright px-2 py-1 rounded border border-outline-variant/20">Philosophy</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary/20 hover:text-primary rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-2 hover:bg-error/20 hover:text-error rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button>
+<button class="p-2 hover:bg-surface-variant rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</div>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="hover:bg-surface-bright/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-14 bg-surface-container-highest rounded-md overflow-hidden shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="vintage leather bound book cover with intricate gold filigree resting on dark wood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5oRvZVVZkfpfgy1bYWyPNIoHBCLn1HEVOgvMWsNkuIHdO8kkJC8JURaki9FRKIJOchPWHelkZsJD9oLbsCV4YdYAd8pGm-v9KGf6YLv53GqBKntcOaXzzDAKL1J_a-ziy202Mmixzbc3f3W_uaL7RQmtGKb-29VUo4tHB774o07oGw1MVskDCDX5HiDgB7YoSBL0FTnU9TArjh5K91z4WqN7AHr3yxNDOaBgdMJvczprDGpO3Oy7AM4lUymK0WSMzanQV36lGL5Y"/>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface group-hover:text-primary transition-colors">Digital Renaissance</p>
+<p class="text-xs text-on-surface-variant">Dr. Alan Turing III</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-on-surface-variant">978-0-45-228423-4</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-tertiary-container/20 text-tertiary text-[10px] font-bold uppercase">Reserved</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs bg-surface-bright px-2 py-1 rounded border border-outline-variant/20">Technology</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary/20 hover:text-primary rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-2 hover:bg-error/20 hover:text-error rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button>
+<button class="p-2 hover:bg-surface-variant rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</div>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="hover:bg-surface-bright/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-14 bg-surface-container-highest rounded-md overflow-hidden shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="modern paperback book with bright colorful abstract liquid shapes on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBllbsflm7JotZ-rWM3wnbHGZ_iwo_6EBXmxxC2GCPszRP8bmYX_SxUjfcqzMOzt-frFq7UJgEy_0qzGnRGLUQTiabhpFd2oY6cHyuqgkTAnAFkj-ewOecvgwzxfpwHSOSBv1VKV2Qj1VhXmAspbmnvwbbOnvK74eoRvZO8lFR2rNxu34PUIz-Y_J7pLMsVr6A9HRwjDZTc37SnHyURx6klvWMnCXfoJtJTM8j-g7uEKn3wRD6FROfUZdxndjq4AJ9ueEEiUQegSUc"/>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface group-hover:text-primary transition-colors">Quantum Logic</p>
+<p class="text-xs text-on-surface-variant">Faye Richardson</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-on-surface-variant">978-1-56-619909-4</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-error-container/20 text-error text-[10px] font-bold uppercase">Overdue</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs bg-surface-bright px-2 py-1 rounded border border-outline-variant/20">Science</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary/20 hover:text-primary rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-2 hover:bg-error/20 hover:text-error rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button>
+<button class="p-2 hover:bg-surface-variant rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</div>
+</td>
+</tr>
+<!-- Table Row 4 -->
+<tr class="hover:bg-surface-bright/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-14 bg-surface-container-highest rounded-md overflow-hidden shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="dramatic red and black book cover with silhouette of a city skyline under a crescent moon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0FBo57x0xK4JPcDVMGTTTaUzsxO_-8AtliVS8T3oTQhluEDsZNg3ZZBm0qPZ0XAujQ8DNacHjux-QUDySdt999CdsgqF3YadN8sYdKzFWrFSo0bbJ2KnYL32Lhim3U3n44-sdaYNsaTTByNaL5MuoVn0lm-4uNrDI7wkhsMKU5GqUbUqo3-88ypcx519zBu37RolXz-4UT46VedzztkfYfgFz0LNr_6X6HIa8jWZ_5wk3AxpRGFpqjH1m4B1SyFhKQs4q7OP1_VE"/>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface group-hover:text-primary transition-colors">Shadow Architect</p>
+<p class="text-xs text-on-surface-variant">Leo Da Vinci</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-on-surface-variant">978-0-12-345678-9</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-secondary-container/20 text-secondary text-[10px] font-bold uppercase">Available</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs bg-surface-bright px-2 py-1 rounded border border-outline-variant/20">Architecture</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary/20 hover:text-primary rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-2 hover:bg-error/20 hover:text-error rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button>
+<button class="p-2 hover:bg-surface-variant rounded-lg transition-colors"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer/Pagination -->
+<div class="p-4 bg-surface-container-high/30 border-t border-outline-variant/10 flex items-center justify-between">
+<p class="text-xs text-on-surface-variant">Showing <span class="text-on-surface font-bold">1-4</span> of <span class="text-on-surface font-bold">12,482</span> titles</p>
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded-lg border border-outline-variant/20 hover:bg-surface-bright transition-all disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex gap-1">
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary text-xs font-bold">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-bright text-xs">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-bright text-xs">3</button>
+<span class="flex items-end px-1 pb-1 text-on-surface-variant">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-bright text-xs">312</button>
+</div>
+<button class="p-1.5 rounded-lg border border-outline-variant/20 hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) - For Home/Main Screens -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="w-14 h-14 rounded-full bg-primary shadow-2xl shadow-primary/40 flex items-center justify-center text-on-primary hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+</body></html>

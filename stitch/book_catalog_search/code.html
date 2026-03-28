@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShelfSense | Digital Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#9396ff",
+              "surface-container-high": "#141f38",
+              "on-error-container": "#ffb2b9",
+              "primary-fixed": "#9396ff",
+              "tertiary-container": "#ff8ed2",
+              "on-secondary": "#005a3c",
+              "secondary-fixed": "#69f6b8",
+              "surface-variant": "#192540",
+              "surface-dim": "#060e20",
+              "secondary": "#69f6b8",
+              "primary-dim": "#6063ee",
+              "on-primary": "#0f00a4",
+              "primary-fixed-dim": "#8387ff",
+              "on-error": "#490013",
+              "on-tertiary-container": "#63054a",
+              "secondary-container": "#006c49",
+              "on-background": "#dee5ff",
+              "on-surface": "#dee5ff",
+              "surface-container": "#0f1930",
+              "on-primary-container": "#0a0081",
+              "on-secondary-container": "#e1ffec",
+              "on-secondary-fixed": "#00452d",
+              "inverse-on-surface": "#4d556b",
+              "surface-container-highest": "#192540",
+              "on-surface-variant": "#a3aac4",
+              "inverse-primary": "#494bd7",
+              "on-primary-fixed-variant": "#0e009d",
+              "surface-container-lowest": "#000000",
+              "tertiary": "#ffa5d9",
+              "secondary-fixed-dim": "#58e7ab",
+              "tertiary-fixed-dim": "#ef81c4",
+              "tertiary-dim": "#ef81c4",
+              "surface": "#060e20",
+              "error": "#ff6e84",
+              "primary": "#a3a6ff",
+              "outline-variant": "#40485d",
+              "inverse-surface": "#faf8ff",
+              "on-tertiary-fixed": "#3b002b",
+              "background": "#060e20",
+              "secondary-dim": "#58e7ab",
+              "on-tertiary-fixed-variant": "#6e1354",
+              "outline": "#6d758c",
+              "surface-tint": "#a3a6ff",
+              "error-dim": "#d73357",
+              "surface-container-low": "#091328",
+              "on-secondary-fixed-variant": "#006544",
+              "tertiary-fixed": "#ff8ed2",
+              "on-primary-fixed": "#000000",
+              "on-tertiary": "#701455",
+              "error-container": "#a70138",
+              "surface-bright": "#1f2b49"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #060e20; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .loom-scroll-mask {
+            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+        }
+        .glass-panel {
+            background: rgba(25, 37, 64, 0.6);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden">
+<!-- SideNavBar (Authority Source: Shared Components JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-50 bg-[#091328] flex flex-col py-6 space-y-2 font-manrope font-medium text-sm">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary">menu_book</span>
+</div>
+<div>
+<h1 class="text-xl font-black text-[#dee5ff] tracking-tight">ShelfSense</h1>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">The Digital Curator</p>
+</div>
+</div>
+<nav class="flex-1">
+<!-- Dashboard (Inactive) -->
+<a class="flex items-center gap-3 text-[#dee5ff]/60 px-4 py-3 mx-2 hover:bg-[#1f2b49] hover:text-[#dee5ff] transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Books (Active - Context: Book Search) -->
+<a class="flex items-center gap-3 bg-indigo-600/10 text-indigo-400 rounded-lg px-4 py-3 mx-2 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-semibold">Books</span>
+</a>
+<!-- Profile (Inactive) -->
+<a class="flex items-center gap-3 text-[#dee5ff]/60 px-4 py-3 mx-2 hover:bg-[#1f2b49] hover:text-[#dee5ff] transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Profile</span>
+</a>
+<!-- Admin (Inactive) -->
+<a class="flex items-center gap-3 text-[#dee5ff]/60 px-4 py-3 mx-2 hover:bg-[#1f2b49] hover:text-[#dee5ff] transition-all" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span>Admin</span>
+</a>
+</nav>
+<div class="mt-auto px-2 space-y-1">
+<button class="w-full mb-4 bg-gradient-to-r from-primary to-primary-dim text-on-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/10 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+<span>Add New Book</span>
+</button>
+<a class="flex items-center gap-3 text-[#dee5ff]/60 px-4 py-3 mx-2 hover:bg-[#1f2b49] hover:text-[#dee5ff] transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 text-[#dee5ff]/60 px-4 py-3 mx-2 hover:bg-[#1f2b49] hover:text-[#dee5ff] transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen flex flex-col bg-surface">
+<!-- TopNavBar (Authority Source: Shared Components JSON) -->
+<header class="flex justify-between items-center w-full px-8 py-4 bg-[#060e20] z-40 font-manrope antialiased tracking-tight">
+<div class="flex items-center gap-8 w-1/2">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2.5 pl-12 pr-4 text-sm text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/30 transition-all" placeholder="Search by Title, Author, or ISBN..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="p-2 rounded-full hover:bg-[#1f2b49]/50 transition-colors duration-200 text-[#dee5ff]/70 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant/30">
+<div class="text-right">
+<p class="text-sm font-semibold text-[#dee5ff]">Profile</p>
+<p class="text-[10px] text-on-surface-variant tracking-wider uppercase">Senior Curator</p>
+</div>
+<img alt="User avatar" class="w-10 h-10 rounded-full border-2 border-primary/20" data-alt="close-up portrait of a professional man with a friendly expression in a modern office environment with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOcF0JumVgFAa41UNWWkF_WTvL7bJFhcexkVE4bXB0vUSNzWzIRcpgd87Cs2XsIJ2GUN9APmQ4-RUEWSOjVbIvbRv3ZEwpX8OraU8_0CmR9rndpFbXuZYxYzyaJBLIschIsPOwdJFfuSyZPaExnBwRskqMyxCEJQvuRyYkmOzu6rI2c2s83FTQhPsXJt7QqL0EJ5-74MohbYf719a7t3SWDca6oOQevDWdJuAdpzSfIcAMxTbsx6ZXc6jj4Q5aMdknv1QjE1KpZ2k"/>
+</div>
+</div>
+</header>
+<!-- Catalog Body -->
+<section class="flex-1 p-8 pt-4 overflow-hidden flex flex-col">
+<!-- Hero Header -->
+<div class="mb-10 flex items-end justify-between">
+<div>
+<h2 class="text-4xl font-black font-headline tracking-tighter text-on-surface mb-2">Midnight Archive</h2>
+<p class="text-on-surface-variant body-md max-w-xl">A curated experience for the modern librarian. Explore 14,204 titles within the digital vault of ShelfSense.</p>
+</div>
+<div class="flex gap-3">
+<div class="glass-panel px-6 py-4 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="text-2xl font-black text-on-surface">11.8k</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Available</p>
+</div>
+</div>
+<div class="glass-panel px-6 py-4 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-error-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</div>
+<div>
+<p class="text-2xl font-black text-on-surface">2.4k</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Issued</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Filters & Controls -->
+<div class="flex items-center justify-between mb-6 gap-4">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mr-2">Filters:</span>
+<button class="bg-surface-container-high hover:bg-surface-bright text-on-surface px-4 py-2 rounded-full text-xs font-medium flex items-center gap-2 transition-all">
+<span>Category: All</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="bg-surface-container-high hover:bg-surface-bright text-on-surface px-4 py-2 rounded-full text-xs font-medium flex items-center gap-2 transition-all">
+<span>Author: Featured</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 transition-all">
+<span>Availability: Any</span>
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+</button>
+</div>
+<div class="flex bg-surface-container-low p-1 rounded-lg">
+<button class="p-2 bg-surface-container text-primary rounded-md shadow-sm">
+<span class="material-symbols-outlined">view_list</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+</div>
+</div>
+<!-- Inventory Table Container -->
+<div class="flex-1 bg-surface-container-low rounded-2xl overflow-hidden flex flex-col relative">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-8 py-5 border-b border-outline-variant/10 bg-surface-container-high/50 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
+<div class="col-span-4">Book Title &amp; Metadata</div>
+<div class="col-span-2">Author</div>
+<div class="col-span-2 text-center">Location</div>
+<div class="col-span-2 text-center">Status</div>
+<div class="col-span-2 text-right">Actions</div>
+</div>
+<!-- Scrollable Body with "Loom" Effect -->
+<div class="flex-1 overflow-y-auto loom-scroll-mask">
+<div class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-6 items-center hover:bg-surface-bright/30 transition-colors group">
+<div class="col-span-4 flex items-center gap-4">
+<div class="w-12 h-16 bg-surface-container-highest rounded-lg overflow-hidden flex-shrink-0 shadow-xl shadow-black/40">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="aesthetic book cover with minimalist typography on a textured dark paper background in cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANYN0UHPyBePHtC_mQ12FEDGQdUMwP4RUiAFOpWYJrJsPPKQ9IYmu3QfsKkCtu37tbmdYfSkBKdooC1SXyTGuPlzZ0iVg_xamssgA0WRr2inS2Wf3FgNek_tlKOSGmGMi4Em9i7NDHPHHTP07baDIpC8JJofzUqHZ7wNldXZzCSU4w-l4N9iNLCAVOfXsXlWlXyhvJh1OzfGyoDolasaMw5mhJ1nH3BdqqIcKGuAfKBxUPYGYtO030qdN0QpvNGmldeM7A4vMF92s"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface body-md leading-tight mb-1">The Shadow of the Wind</h4>
+<p class="text-xs text-on-surface-variant">Historical Fiction • 2001</p>
+</div>
+</div>
+<div class="col-span-2 text-sm text-on-surface/80">Carlos Ruiz Zafón</div>
+<div class="col-span-2 text-center">
+<span class="bg-surface-container-highest text-[10px] font-bold px-2 py-1 rounded text-primary-container">FL 02 • R 14 • K 09</span>
+</div>
+<div class="col-span-2 flex justify-center">
+<span class="flex items-center gap-1.5 text-xs font-semibold text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                                    Available
+                                </span>
+</div>
+<div class="col-span-2 text-right">
+<button class="bg-primary/10 hover:bg-primary text-primary hover:text-on-primary px-4 py-2 rounded-lg text-xs font-bold transition-all active:scale-95">Issue Book</button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-6 items-center hover:bg-surface-bright/30 transition-colors group">
+<div class="col-span-4 flex items-center gap-4">
+<div class="w-12 h-16 bg-surface-container-highest rounded-lg overflow-hidden flex-shrink-0 shadow-xl shadow-black/40">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="minimalist book cover for a mystery novel featuring a single candle flame on a deep black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0WEVOE3QolnEH98kBrAdGpTTX1mtMnRL6uqdF1BldqUuvnksav2NMttBulJzRSHkL7QhhAGy8E--dWEreCLUz3OH5iYLABXhYROoWAlUf36Dv1WMQuViKgapGwo6nz1LVXcZvAEl4JW9mCsnO1Md4PBH2lihlRnxv-CQYhfw4_W6WqWUSWKquCDXGseZcpyUYRF_qzshhFK-N7ioK7DVc0UGNAKQ6qblqxmYcyzqMSJPBJKCdxBLHRGJQP5P6FUHN2QN2zD6MQPo"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface body-md leading-tight mb-1">The Midnight Library</h4>
+<p class="text-xs text-on-surface-variant">Contemporary Fantasy • 2020</p>
+</div>
+</div>
+<div class="col-span-2 text-sm text-on-surface/80">Matt Haig</div>
+<div class="col-span-2 text-center">
+<span class="bg-surface-container-highest text-[10px] font-bold px-2 py-1 rounded text-primary-container">FL 01 • R 03 • K 22</span>
+</div>
+<div class="col-span-2 flex justify-center">
+<span class="flex items-center gap-1.5 text-xs font-semibold text-error">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                                    Issued
+                                </span>
+</div>
+<div class="col-span-2 text-right">
+<button class="bg-surface-container-highest text-on-surface-variant cursor-not-allowed px-4 py-2 rounded-lg text-xs font-bold opacity-50">Reserved</button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-6 items-center hover:bg-surface-bright/30 transition-colors group">
+<div class="col-span-4 flex items-center gap-4">
+<div class="w-12 h-16 bg-surface-container-highest rounded-lg overflow-hidden flex-shrink-0 shadow-xl shadow-black/40">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="a stack of old vintage books with gold leaf edges in a dusty library setting with dramatic sunbeams" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFbLhZz3tUTVeY7nyienUcQf13BuWRk0ouZKFvYpaj_ZLPll7BGXSk75N3qVtuOKIZqu7ejwuaHXQOR_nKgPFeTvrsYr9u2JQmb9logXGIZvpP-aL-juc7u6JnXxguRCQdDx8wFPuZcoXMEPHDEcKF154_VBSVarVTvUFjCslO2OeR0R9ozuEMpGR1t-ublkLr-F6BVUEAuQjUX8hOpInITI55D86hIepD6T07DGkq6BnIgg-FGlqtvfCZ4gU7xUyWge6FqkJuOJU"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface body-md leading-tight mb-1">Dune</h4>
+<p class="text-xs text-on-surface-variant">Sci-Fi Epic • 1965</p>
+</div>
+</div>
+<div class="col-span-2 text-sm text-on-surface/80">Frank Herbert</div>
+<div class="col-span-2 text-center">
+<span class="bg-surface-container-highest text-[10px] font-bold px-2 py-1 rounded text-primary-container">FL 04 • R 01 • K 15</span>
+</div>
+<div class="col-span-2 flex justify-center">
+<span class="flex items-center gap-1.5 text-xs font-semibold text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                                    Available
+                                </span>
+</div>
+<div class="col-span-2 text-right">
+<button class="bg-primary/10 hover:bg-primary text-primary hover:text-on-primary px-4 py-2 rounded-lg text-xs font-bold transition-all active:scale-95">Issue Book</button>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-6 items-center hover:bg-surface-bright/30 transition-colors group">
+<div class="col-span-4 flex items-center gap-4">
+<div class="w-12 h-16 bg-surface-container-highest rounded-lg overflow-hidden flex-shrink-0 shadow-xl shadow-black/40">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="abstract artistic book cover with swirling ink patterns of navy blue and gold leaf" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5978JbPdrgkclyLt0CkGg_CWNusVD7Cic7PYB60mHOHmdCO5LxwLDgQ-6Ndq9PYcBr4dKA9uAj2rD7S2FwGlAZ8BxeUKaO8ik--vo3TBdYN2akvS9VgzsTFkn4_9AmFhyGUFoaJ-4cMThghPRx1WoVHcae0WvqQKjVCcXwqnKrFpjGsVThD9XWD4urvhiq6imUyoMLtIiqnibwKg28zZ-yoEgE3B_wgVjCikYMkawEGMlVpRM_C64DVhHCU6LTfvfg42IpMiXiW0"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface body-md leading-tight mb-1">Circe</h4>
+<p class="text-xs text-on-surface-variant">Greek Mythology • 2018</p>
+</div>
+</div>
+<div class="col-span-2 text-sm text-on-surface/80">Madeline Miller</div>
+<div class="col-span-2 text-center">
+<span class="bg-surface-container-highest text-[10px] font-bold px-2 py-1 rounded text-primary-container">FL 02 • R 08 • K 11</span>
+</div>
+<div class="col-span-2 flex justify-center">
+<span class="flex items-center gap-1.5 text-xs font-semibold text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                                    Available
+                                </span>
+</div>
+<div class="col-span-2 text-right">
+<button class="bg-primary/10 hover:bg-primary text-primary hover:text-on-primary px-4 py-2 rounded-lg text-xs font-bold transition-all active:scale-95">Issue Book</button>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-6 items-center hover:bg-surface-bright/30 transition-colors group">
+<div class="col-span-4 flex items-center gap-4">
+<div class="w-12 h-16 bg-surface-container-highest rounded-lg overflow-hidden flex-shrink-0 shadow-xl shadow-black/40">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="vibrant book cover with high-contrast colors and geometric shapes representing a futuristic city skyline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2xpTRP1RGpsq9j9kuCFOsUApjwLkV9FpbO1VQ6N1tqcSCkFgkNXBZf6-Tf6NQUrGbLau0RUkK8kThX-P4tNzl75SuezkHmmFOIT_0a5FcG1gfA8aMnmWur10hSMXmzbiQSwPP_kvDRTAZl1XHioRcveoZzhW_AzEDzwOlwyrGL1XFpp6ym4EOx3umzG42OhR0OWKXK_a_9LL-3AnP8pzzZd2LMkyhWdWPYx1aO67hCOkGiDM5-FRNVWbiLQVVuSV3a1h8LRmhKBE"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface body-md leading-tight mb-1">Neuromancer</h4>
+<p class="text-xs text-on-surface-variant">Cyberpunk • 1984</p>
+</div>
+</div>
+<div class="col-span-2 text-sm text-on-surface/80">William Gibson</div>
+<div class="col-span-2 text-center">
+<span class="bg-surface-container-highest text-[10px] font-bold px-2 py-1 rounded text-primary-container">FL 05 • R 12 • K 04</span>
+</div>
+<div class="col-span-2 flex justify-center">
+<span class="flex items-center gap-1.5 text-xs font-semibold text-error">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                                    Issued
+                                </span>
+</div>
+<div class="col-span-2 text-right">
+<button class="bg-surface-container-highest text-on-surface-variant cursor-not-allowed px-4 py-2 rounded-lg text-xs font-bold opacity-50">Reserved</button>
+</div>
+</div>
+<!-- Row 6 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-6 items-center hover:bg-surface-bright/30 transition-colors group">
+<div class="col-span-4 flex items-center gap-4">
+<div class="w-12 h-16 bg-surface-container-highest rounded-lg overflow-hidden flex-shrink-0 shadow-xl shadow-black/40">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="dark gothic book cover with intricate silver filigree and a single raven feather on deep purple velvet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2B5ASL-8gVwc0DdPYZpjBGsXkLGr23Z0e1CkHpCfc3jrWNm22pH6WBjF53Jo7ypmurknU1lezzxyQXUMAT73gQ195xNpCjmTAkmHuHocWg3-_e3WX3G4nOpDUOp9R1QDKSFLY_HUXyp9rHBBcGQ1sYTA6lpwAz21Gr_3HG3paJGPnXCvsiquU1l2cIAMwIzzcd4aD_jnkhaMw1WkbR0KOCIVmdUlo32bdcAuP_T2FQAMEhDFz2-kMWr6nXbtdc78L46bvC11Hfvs"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface body-md leading-tight mb-1">Nevernight</h4>
+<p class="text-xs text-on-surface-variant">Dark Fantasy • 2016</p>
+</div>
+</div>
+<div class="col-span-2 text-sm text-on-surface/80">Jay Kristoff</div>
+<div class="col-span-2 text-center">
+<span class="bg-surface-container-highest text-[10px] font-bold px-2 py-1 rounded text-primary-container">FL 03 • R 05 • K 30</span>
+</div>
+<div class="col-span-2 flex justify-center">
+<span class="flex items-center gap-1.5 text-xs font-semibold text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                                    Available
+                                </span>
+</div>
+<div class="col-span-2 text-right">
+<button class="bg-primary/10 hover:bg-primary text-primary hover:text-on-primary px-4 py-2 rounded-lg text-xs font-bold transition-all active:scale-95">Issue Book</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Pagination -->
+<div class="px-8 py-4 bg-surface-container-high/50 border-t border-outline-variant/10 flex items-center justify-between text-xs">
+<p class="text-on-surface-variant">Showing <span class="text-on-surface font-bold">1 - 6</span> of 14,204 books</p>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-container-highest text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-primary text-on-primary font-bold">1</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest">2</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest">3</button>
+<span class="text-on-surface-variant px-1">...</span>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest">2368</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-container-highest text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

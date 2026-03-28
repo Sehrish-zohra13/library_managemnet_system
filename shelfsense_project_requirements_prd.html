@@ -1,0 +1,33 @@
+# ShelfSense – Smart Library Inventory & Access Management System
+
+## Project Overview
+ShelfSense is a modern, full-stack web application designed for digital library management. It features a clean, SaaS-style dark interface and provides tools for both students and librarians (admins) to manage book inventory, issuance, returns, and fines.
+
+## Tech Stack
+- **Frontend:** React (Vite), Tailwind CSS, Framer Motion, Lucide Icons
+- **Backend:** Node.js, Express
+- **Database:** MySQL
+- **Charts:** Chart.js or Recharts
+- **API Client:** Axios
+
+## Database Schema (MySQL)
+- **Users:** `id, name, email, password, role (Student/Admin)`
+- **Books:** `id, title, author, category, quantity, floor, row, rack`
+- **Issues:** `id, user_id, book_id, issue_date, return_date, fine`
+- **Requests:** `id, user_id, issue_id, reason, status (Pending/Approved/Rejected)`
+
+## Core Features
+- **Authentication:** Role-based access (Student/Admin).
+- **Dashboard:** Analytics cards (Total Books, Issued, Overdue) and usage charts.
+- **Book Management:** Search, filter, and view book locations (Floor/Row/Rack).
+- **Issue/Return System:** Simulate QR scans for issuance, tracking return dates.
+- **Fine System:** Automatic fine calculation and a request system for fine waivers.
+- **Admin Panel:** Full CRUD for books, user activity monitoring, and request management.
+- **Reservation System:** Queue management for popular books.
+
+## Design Requirements
+- **Theme:** Primary dark theme.
+- **Style:** Modern SaaS, minimal, card-based layout, soft shadows, rounded corners.
+- **Typography:** Inter or Poppins.
+- **Interactions:** Smooth Framer Motion animations and hover effects.
+- **Layout:** Sidebar navigation with a top navbar.

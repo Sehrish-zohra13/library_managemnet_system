@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShelfSense - The Digital Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#9396ff",
+              "surface-container-high": "#141f38",
+              "on-error-container": "#ffb2b9",
+              "primary-fixed": "#9396ff",
+              "tertiary-container": "#ff8ed2",
+              "on-secondary": "#005a3c",
+              "secondary-fixed": "#69f6b8",
+              "surface-variant": "#192540",
+              "surface-dim": "#060e20",
+              "secondary": "#69f6b8",
+              "primary-dim": "#6063ee",
+              "on-primary": "#0f00a4",
+              "primary-fixed-dim": "#8387ff",
+              "on-error": "#490013",
+              "on-tertiary-container": "#63054a",
+              "secondary-container": "#006c49",
+              "on-background": "#dee5ff",
+              "on-surface": "#dee5ff",
+              "surface-container": "#0f1930",
+              "on-primary-container": "#0a0081",
+              "on-secondary-container": "#e1ffec",
+              "on-secondary-fixed": "#00452d",
+              "inverse-on-surface": "#4d556b",
+              "surface-container-highest": "#192540",
+              "on-surface-variant": "#a3aac4",
+              "inverse-primary": "#494bd7",
+              "on-primary-fixed-variant": "#0e009d",
+              "surface-container-lowest": "#000000",
+              "tertiary": "#ffa5d9",
+              "secondary-fixed-dim": "#58e7ab",
+              "tertiary-fixed-dim": "#ef81c4",
+              "tertiary-dim": "#ef81c4",
+              "surface": "#060e20",
+              "error": "#ff6e84",
+              "primary": "#a3a6ff",
+              "outline-variant": "#40485d",
+              "inverse-surface": "#faf8ff",
+              "on-tertiary-fixed": "#3b002b",
+              "background": "#060e20",
+              "secondary-dim": "#58e7ab",
+              "on-tertiary-fixed-variant": "#6e1354",
+              "outline": "#6d758c",
+              "surface-tint": "#a3a6ff",
+              "error-dim": "#d73357",
+              "surface-container-low": "#091328",
+              "on-secondary-fixed-variant": "#006544",
+              "tertiary-fixed": "#ff8ed2",
+              "on-primary-fixed": "#000000",
+              "on-tertiary": "#701455",
+              "error-container": "#a70138",
+              "surface-bright": "#1f2b49"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #060e20; color: #dee5ff; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(25, 37, 64, 0.6); backdrop-filter: blur(12px); }
+        .loom-mask { mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); }
+        .gradient-button { background: linear-gradient(135deg, #a3a6ff 0%, #6063ee 100%); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Shared Component Shell) -->
+<header class="docked full-width top-0 z-40 bg-[#060e20] flex justify-between items-center w-full px-8 py-4 fixed">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-bold tracking-tighter text-[#dee5ff] font-manrope">ShelfSense</span>
+</div>
+<nav class="hidden md:flex items-center gap-8 font-manrope antialiased tracking-tight">
+<a class="text-[#dee5ff]/70 hover:bg-[#1f2b49]/50 transition-colors duration-200 px-3 py-1 rounded" href="#">Features</a>
+<a class="text-[#dee5ff]/70 hover:bg-[#1f2b49]/50 transition-colors duration-200 px-3 py-1 rounded" href="#">Library</a>
+<a class="text-indigo-400 font-semibold border-b-2 border-indigo-500 px-3 py-1" href="#">Login</a>
+<a class="gradient-button text-on-primary px-6 py-2 rounded-lg font-bold tracking-tight active:scale-95 duration-150" href="#">Sign Up</a>
+</nav>
+<div class="flex items-center gap-4 md:hidden">
+<span class="material-symbols-outlined text-on-surface">menu</span>
+</div>
+</header>
+<main class="pt-24 min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Abstract Background Elements -->
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-tertiary/5 blur-[100px] rounded-full pointer-events-none"></div>
+<div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+<!-- Hero Content: The Digital Curator -->
+<div class="lg:col-span-7 space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/20 text-secondary text-sm font-medium">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+                    Now in Private Alpha
+                </div>
+<h1 class="text-5xl lg:text-7xl font-extrabold tracking-tighter leading-none">
+                    The <span class="text-primary">Digital</span> <br/> 
+                    Curator.
+                </h1>
+<p class="text-on-surface-variant text-lg lg:text-xl max-w-xl leading-relaxed">
+                    Elevate your knowledge management. A high-tech gallery for your personal library, designed with intentional asymmetry and tonal depth for the modern scholar.
+                </p>
+<div class="grid grid-cols-3 gap-6 pt-4">
+<div class="space-y-1">
+<div class="text-2xl font-bold text-on-surface">12k+</div>
+<div class="text-xs text-on-surface-variant uppercase tracking-widest">Active Curators</div>
+</div>
+<div class="space-y-1">
+<div class="text-2xl font-bold text-on-surface">4.8m</div>
+<div class="text-xs text-on-surface-variant uppercase tracking-widest">Books Indexed</div>
+</div>
+<div class="space-y-1">
+<div class="text-2xl font-bold text-on-surface">99.9%</div>
+<div class="text-xs text-on-surface-variant uppercase tracking-widest">Sync Uptime</div>
+</div>
+</div>
+<!-- Abstract Visual: Bookshelf Grid -->
+<div class="pt-8 opacity-40">
+<div class="flex gap-2">
+<div class="h-16 w-1 bg-primary/30 rounded-full"></div>
+<div class="h-24 w-1 bg-primary/50 rounded-full"></div>
+<div class="h-20 w-1 bg-primary/20 rounded-full"></div>
+<div class="h-28 w-1 bg-primary/60 rounded-full"></div>
+<div class="h-14 w-1 bg-primary/40 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Login / Registration Form Section -->
+<div class="lg:col-span-5">
+<div class="glass-panel border border-outline-variant/10 rounded-[2rem] p-8 lg:p-10 shadow-2xl relative">
+<div class="space-y-6">
+<div class="text-center space-y-2">
+<h2 class="text-3xl font-bold tracking-tight">Welcome Back</h2>
+<p class="text-on-surface-variant text-sm">Enter your credentials to access your archive</p>
+</div>
+<form class="space-y-5">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Role Selection</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 py-3 rounded-xl bg-primary/10 border border-primary/30 text-primary text-sm font-semibold transition-all" type="button">
+<span class="material-symbols-outlined text-sm">school</span>
+                                        Student
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 rounded-xl bg-surface-container border border-outline-variant/20 text-on-surface-variant text-sm font-semibold hover:bg-surface-bright transition-all" type="button">
+<span class="material-symbols-outlined text-sm">admin_panel_settings</span>
+                                        Admin
+                                    </button>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">mail</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border-none rounded-xl focus:ring-2 focus:ring-primary/30 text-on-surface placeholder:text-outline transition-all" placeholder="curator@shelfsense.io" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Password</label>
+<a class="text-xs text-primary hover:underline" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">lock</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border-none rounded-xl focus:ring-2 focus:ring-primary/30 text-on-surface placeholder:text-outline transition-all" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="flex items-center gap-3 px-1 py-2">
+<input class="w-4 h-4 rounded bg-surface-container-lowest border-outline-variant text-primary focus:ring-primary/20" id="remember" type="checkbox"/>
+<label class="text-sm text-on-surface-variant" for="remember">Keep my session active</label>
+</div>
+<button class="w-full py-4 gradient-button rounded-xl text-on-primary font-bold text-lg shadow-lg shadow-primary/20 active:scale-[0.98] transition-all" type="submit">
+                                Access Archive
+                            </button>
+</form>
+<div class="relative py-4">
+<div class="absolute inset-0 flex items-center"><div class="w-full border-t border-outline-variant/10"></div></div>
+<div class="relative flex justify-center text-xs uppercase"><span class="bg-surface-container px-4 text-on-surface-variant tracking-widest">Or continue with</span></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 rounded-xl bg-surface-container border border-outline-variant/20 hover:bg-surface-bright transition-all">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe4WO84l75a-q79PBAyuD7UaYMyWtoJ_qFkJ_U4rph2m_p9UkYSCwymYwKi_Vq3KLBVzO7KCI-V-7XFMwtXixVdrj3ZpKXI2UWP67OnSkMJH9m30Atuy9zFKrI5J_On0YFye44sbwl0-gl2766Lj3H4eZ3fQGX6QCJ3ho-bpjo5-070DrfK0-bhJ3qaShw3Dk8RRN_yz2znXAie0PSflaQjqaKP1Yv-Qpt-Sn943LTFcGRdl-A2XgnzXrkXOT4Lncgk4rihClBwgE"/>
+<span class="text-sm font-medium">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 rounded-xl bg-surface-container border border-outline-variant/20 hover:bg-surface-bright transition-all">
+<img alt="Apple" class="w-5 h-5 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnJ2S2wBjIef88G0G-s9ydd1UuhdMrHd34CVHQ1pEuqQ6Vao32fIss4RrGx0TohUVbzrqfufAnlv_ucn8n10yuMWp4_NZA4yUxNJJ_m3AVX-5gnHfbLH7B_GmDqfk9p8d_hiQoniqqhbP9jXkmh9Mm7Y85VWI_nzX7P0k78r_sklpSIoitBJ8wygsr2RIu45dKna3aQdCs_sp5VdS3Ru0xLvwredQWW5_pDoJ0rFnTE2ojOOo6jQ2DEMDW7JIgzlPzUB89ms9L97w"/>
+<span class="text-sm font-medium">Apple</span>
+</button>
+</div>
+<p class="text-center text-sm text-on-surface-variant">
+                            New to the library? <a class="text-primary font-semibold hover:underline" href="#">Request Access</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Scroll Indicator / Secondary Graphic -->
+<div class="mt-24 flex flex-col items-center gap-4 opacity-30">
+<span class="text-[10px] uppercase tracking-[0.3em] font-bold">Discover the Architecture</span>
+<div class="w-px h-16 bg-gradient-to-b from-primary to-transparent"></div>
+</div>
+</main>
+<!-- Visual Accents: High-End Library Motif -->
+<section class="py-24 bg-surface-container-low overflow-hidden">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Bento Card 1 -->
+<div class="md:col-span-2 bg-surface-container rounded-3xl p-8 border border-outline-variant/5 group">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="text-2xl font-bold mb-3">AI Curation</h3>
+<p class="text-on-surface-variant leading-relaxed">Let our neural engines organize your messy collection into logical, thematic clusters with zero manual tagging.</p>
+</div>
+<!-- Bento Card 2 -->
+<div class="bg-surface-container rounded-3xl p-8 border border-outline-variant/5 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+<span class="material-symbols-outlined text-secondary text-4xl mb-4" data-icon="speed">speed</span>
+<h3 class="text-xl font-bold mb-2">Instant Search</h3>
+<p class="text-sm text-on-surface-variant">Global OCR indexing for every page.</p>
+</div>
+<!-- Bento Card 3 -->
+<div class="bg-surface-container rounded-3xl p-8 border border-outline-variant/5">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4" data-icon="terminal">terminal</span>
+<h3 class="text-xl font-bold mb-2">Developer API</h3>
+<p class="text-sm text-on-surface-variant">Integrate your archive with any tool.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Loom Scroll Example Footer -->
+<footer class="bg-surface pt-16 pb-8">
+<div class="container mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-t border-outline-variant/10 pt-8">
+<div class="space-y-2">
+<span class="text-xl font-black text-[#dee5ff]">ShelfSense</span>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest">The Digital Curator © 2024</p>
+</div>
+<div class="flex gap-8 text-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Documentation</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary" data-icon="public">public</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary" data-icon="share">share</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- Image Prompts (Embedded as per instructions) -->
+<!-- Image for Login section background (hidden visual context): 
+         data-alt="abstract architectural grid of dark glass and indigo lights representing a futuristic digital library archive" -->
+<!-- Image for Google Icon:
+         data-alt="google official logo icon for authentication services" -->
+<!-- Image for Apple Icon:
+         data-alt="apple official logo icon in white for high contrast dark theme authentication" -->
+</body></html>
