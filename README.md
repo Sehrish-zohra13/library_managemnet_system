@@ -20,7 +20,7 @@ Lib-Link is a full-stack library management system developed during a 24-hour ha
 
 ## Tech Stack
 
-* Frontend: HTML, CSS, JavaScript
+* Frontend: React
 * Backend: Node.js, Express.js
 * Database: MySQL
 * Tools: Git, GitHub
