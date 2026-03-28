@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShelfSense - Scan &amp; Action</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#00452d",
+              "outline-variant": "#40485d",
+              "on-tertiary": "#701455",
+              "surface-container-high": "#141f38",
+              "tertiary-container": "#ff8ed2",
+              "on-error-container": "#ffb2b9",
+              "on-secondary-container": "#e1ffec",
+              "surface-container": "#0f1930",
+              "surface-bright": "#1f2b49",
+              "on-background": "#dee5ff",
+              "secondary-container": "#006c49",
+              "on-tertiary-fixed": "#3b002b",
+              "primary-fixed-dim": "#8387ff",
+              "on-surface": "#dee5ff",
+              "on-surface-variant": "#a3aac4",
+              "on-primary": "#0f00a4",
+              "on-tertiary-container": "#63054a",
+              "background": "#060e20",
+              "primary": "#a3a6ff",
+              "tertiary": "#ffa5d9",
+              "secondary-fixed-dim": "#58e7ab",
+              "on-secondary": "#005a3c",
+              "surface-dim": "#060e20",
+              "on-primary-container": "#0a0081",
+              "tertiary-dim": "#ef81c4",
+              "surface-container-low": "#091328",
+              "surface-container-lowest": "#000000",
+              "on-primary-fixed": "#000000",
+              "secondary": "#69f6b8",
+              "secondary-fixed": "#69f6b8",
+              "surface": "#060e20",
+              "secondary-dim": "#58e7ab",
+              "outline": "#6d758c",
+              "error-container": "#a70138",
+              "inverse-primary": "#494bd7",
+              "surface-variant": "#192540",
+              "primary-dim": "#6063ee",
+              "on-tertiary-fixed-variant": "#6e1354",
+              "tertiary-fixed-dim": "#ef81c4",
+              "surface-container-highest": "#192540",
+              "tertiary-fixed": "#ff8ed2",
+              "error-dim": "#d73357",
+              "primary-fixed": "#9396ff",
+              "surface-tint": "#a3a6ff",
+              "on-primary-fixed-variant": "#0e009d",
+              "error": "#ff6e84",
+              "on-error": "#490013",
+              "primary-container": "#9396ff",
+              "on-secondary-fixed-variant": "#006544",
+              "inverse-on-surface": "#4d556b",
+              "inverse-surface": "#faf8ff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanner-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #a3a6ff, transparent);
+            box-shadow: 0 0 15px #a3a6ff;
+            position: absolute;
+            width: 100%;
+            top: 50%;
+        }
+        .loom-mask {
+            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-50 bg-[#091328] flex flex-col h-full py-6 space-y-2 font-manrope font-medium text-sm">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</div>
+<div>
+<h1 class="text-xl font-black text-[#dee5ff]">ShelfSense</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant/60">The Digital Curator</p>
+</div>
+</div>
+</div>
+<nav class="flex-1">
+<a class="flex items-center gap-3 text-[#dee5ff]/60 px-4 py-3 mx-2 hover:bg-[#1f2b49] hover:text-[#dee5ff] transition-all group" href="#">
+<span class="material-symbols-outlined group-active:translate-x-1 duration-200" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Active Tab: Books (Implicitly where scanning happens) -->
+<a class="flex items-center gap-3 bg-indigo-600/10 text-indigo-400 rounded-lg px-4 py-3 mx-2 group" href="#">
+<span class="material-symbols-outlined translate-x-1 duration-200" data-icon="menu_book">menu_book</span>
+<span>Books</span>
+</a>
+<a class="flex items-center gap-3 text-[#dee5ff]/60 px-4 py-3 mx-2 hover:bg-[#1f2b49] hover:text-[#dee5ff] transition-all group" href="#">
+<span class="material-symbols-outlined group-active:translate-x-1 duration-200" data-icon="person">person</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 text-[#dee5ff]/60 px-4 py-3 mx-2 hover:bg-[#1f2b49] hover:text-[#dee5ff] transition-all group" href="#">
+<span class="material-symbols-outlined group-active:translate-x-1 duration-200" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Admin</span>
+</a>
+</nav>
+<div class="pt-4 mt-4 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 text-[#dee5ff]/60 px-4 py-3 mx-2 hover:bg-[#1f2b49] hover:text-[#dee5ff] transition-all group" href="#">
+<span class="material-symbols-outlined group-active:translate-x-1 duration-200" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 text-[#dee5ff]/60 px-4 py-3 mx-2 hover:bg-[#1f2b49] hover:text-[#dee5ff] transition-all group" href="#">
+<span class="material-symbols-outlined group-active:translate-x-1 duration-200" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-8 py-4 bg-[#060e20] docked full-width top-0 z-40 font-manrope antialiased tracking-tight">
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant material-symbols-outlined" data-icon="search">search</span>
+<input class="bg-surface-container-lowest border-none rounded-full pl-10 pr-6 py-2 text-sm focus:ring-2 focus:ring-primary/30 w-64 placeholder:text-on-surface-variant/50" placeholder="Search library..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#1f2b49]/50 transition-colors duration-200 text-on-surface-variant active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant/20">
+<span class="text-sm font-semibold text-[#dee5ff]">Profile</span>
+<img alt="User avatar" class="w-8 h-8 rounded-full border border-outline-variant/30" data-alt="close-up portrait of a professional man with a neutral expression in a high-end office setting with soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgmyjBzL1MlcvUP1XOdzUJxDfrWMbEQcuZVYa8WMmUBz3NNmrYF6HzXGI3Ay2wYRRLkAZQS3YpJ1IdGJDVfptAi46qlGpLlxUwkSCEylWz9cNsl3zSnXuV0ioo90nCVrWtNGfAr69Yd9LLtZkyGElJtT6inNlVl1FRB5O62FDcNkrbz0E2K86NpTsEpOgL-Bi7tTSmmmGmhGR8vLEZgTNJ558kJZcBQLNNf-XLZDgVl7LjiUnrBWeayvbAZIF2jyZZuQAz6uJMzlQ"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-8 max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="text-4xl font-black font-headline tracking-tighter text-[#dee5ff] mb-2">Scan &amp; Action</h2>
+<p class="text-on-surface-variant max-w-md">Align the book's QR code within the frame to automatically detect and manage issuance or returns.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-3 bg-surface-container-high text-on-surface rounded-xl flex items-center gap-2 hover:bg-surface-bright transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="keyboard">keyboard</span>
+                        Manual Entry
+                    </button>
+</div>
+</div>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left: Scanner Viewport -->
+<div class="lg:col-span-7">
+<div class="relative aspect-[4/3] rounded-3xl overflow-hidden bg-black shadow-2xl group border border-outline-variant/10">
+<!-- Simulated Camera Background -->
+<div class="absolute inset-0 opacity-40">
+<img alt="Library Background" class="w-full h-full object-cover" data-alt="low-angle shot of blurry library bookshelves at night with atmospheric blue and indigo lighting and dust motes in the air" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb-2vVBAXnJm-wBhEVEv4JuWaOKR_Js0MtpNLJUo9Z3oR4Pg6RTR7HJm4XrhymSxBb0QWwNAZSXqxntR4YTEc6ZLH3MtW5oEhe0Q5L-keoVV4cEYTH9YakT4s1ApWDgSQnJnPB-gTXLo14j1W1DLMMQHH5hRM9sI5WWZ1gEMH8IpG_9QU1jVPYpOmk53O5NrSEOFIo2QhqxGPVNI--pFhNVQEK-WJg_OaKe5rJMnsG_q5vdT-1AHbxMRQQOE8qSKbYjyuhgP1sG8Y"/>
+</div>
+<!-- Scanner Interface Overlays -->
+<div class="absolute inset-0 flex items-center justify-center">
+<!-- Scanning Box -->
+<div class="w-72 h-72 relative">
+<!-- Corner Markers -->
+<div class="absolute -top-2 -left-2 w-12 h-12 border-t-4 border-l-4 border-primary rounded-tl-2xl"></div>
+<div class="absolute -top-2 -right-2 w-12 h-12 border-t-4 border-r-4 border-primary rounded-tr-2xl"></div>
+<div class="absolute -bottom-2 -left-2 w-12 h-12 border-b-4 border-l-4 border-primary rounded-bl-2xl"></div>
+<div class="absolute -bottom-2 -right-2 w-12 h-12 border-b-4 border-r-4 border-primary rounded-br-2xl"></div>
+<!-- Scanning Light -->
+<div class="scanner-line"></div>
+<!-- Center Target -->
+<div class="absolute inset-0 flex items-center justify-center opacity-20">
+<span class="material-symbols-outlined text-6xl text-white" data-icon="qr_code_scanner">qr_code_scanner</span>
+</div>
+</div>
+</div>
+<!-- UI Controls on Viewport -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4">
+<button class="w-12 h-12 rounded-full bg-surface-bright/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-all">
+<span class="material-symbols-outlined" data-icon="flashlight_on">flashlight_on</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-surface-bright/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-all">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right: Detection Details -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Detection Card (Elevated Layer) -->
+<div class="bg-surface-container rounded-[1.5rem] p-8 relative overflow-hidden group">
+<!-- Glassmorphism Accent -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/10 blur-3xl rounded-full"></div>
+<div class="flex items-center gap-2 mb-6 text-secondary text-sm font-semibold tracking-wide uppercase">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                            Book Detected
+                        </div>
+<div class="flex gap-6">
+<!-- Book Cover Art -->
+<div class="w-32 h-48 flex-shrink-0 bg-surface-variant rounded-lg overflow-hidden shadow-lg transform group-hover:rotate-2 transition-transform duration-500">
+<img alt="The Shadow of the Wind" class="w-full h-full object-cover" data-alt="vintage book cover with intricate gold filigree patterns on deep crimson leather in dramatic moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyV1fAgsYIpj0txybVdhFa31zdWpczgrbS5TaRGXmp_r4GD1dW47Fd5f7RzfDObdo4ryJ-ENqGWXseFxtDlDTHuXwetLW4BiDElqPXUdSpquspUy2KBtvRcSWNHgJAr7iiOXLJzAAJ_1-_FNE9qoE01U_W3wb8N6vG8irTWiyZ3sT6PF4sqQG_lwrju47udqd-ALLFCeSTPhEuO1hYDq-SYDnZpksLV3Dhrg4PUVJyj1waWbWBbTqI6hhVn-Y9Yhcl27eecEYv1Tw"/>
+</div>
+<!-- Metadata -->
+<div class="flex flex-col justify-center">
+<h3 class="text-2xl font-headline font-bold text-[#dee5ff] mb-1 leading-tight">The Shadow of the Wind</h3>
+<p class="text-on-surface-variant font-medium mb-4">Carlos Ruiz Zafón</p>
+<div class="flex items-center gap-2 bg-secondary/10 text-secondary border border-secondary/20 w-fit px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                                    Available
+                                </div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-10 flex flex-col gap-3">
+<button class="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-primary-dim text-on-primary font-bold text-lg hover:shadow-[0_0_30px_-5px_rgba(163,166,255,0.4)] transition-all active:scale-95">
+                                Issue Book
+                            </button>
+<button class="w-full py-4 rounded-xl border-2 border-outline-variant/30 text-on-surface font-semibold hover:bg-surface-bright transition-all active:scale-95">
+                                Return Book
+                            </button>
+</div>
+</div>
+<!-- Quick Metadata Grid (Secondary Layer) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-5 rounded-xl flex flex-col gap-1">
+<span class="text-xs text-on-surface-variant uppercase tracking-widest">Shelf Location</span>
+<span class="text-lg font-bold text-[#dee5ff]">Fiction-A24</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl flex flex-col gap-1">
+<span class="text-xs text-on-surface-variant uppercase tracking-widest">ISBN-13</span>
+<span class="text-lg font-bold text-[#dee5ff]">978-0143034902</span>
+</div>
+</div>
+<!-- Instructions / Loom Scroll Preview -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<div class="flex items-start gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-[#dee5ff] mb-1">Quick Tip</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Ensure the camera is about 6 inches away from the code. For best results, use the flashlight in low-light environments.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recently Scanned (Asymmetric Horizontal List) -->
+<div class="mt-16">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-headline font-bold text-[#dee5ff]">Recently Scanned</h3>
+<button class="text-primary text-sm font-semibold hover:underline">View All History</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Recent Item 1 -->
+<div class="bg-surface-container p-4 rounded-2xl flex items-center gap-4 hover:bg-surface-bright transition-all">
+<div class="w-12 h-16 bg-surface-variant rounded-md overflow-hidden">
+<img alt="Book" class="w-full h-full object-cover" data-alt="minimalist white book cover with bold black typography resting on a grey concrete surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCSxE3SkPAk0mk_FcGh3QtDG3K96LYeaf8v3Gquijbbf4HvYBXpbbTpZi8nsOn7GM_8zpn5J23QmzGIJ0xleef3sKGV_CFl_B_oemeQLB1sz2dZj5MG6-DZz5mnBnz3syP1xxtXzl_sGjTkG-lgF5JDdSwiDze7hT5dkNG0ggyZ0tgR6mAeekQynplfTnp3_WREK0DRc0OATFsoCFk_NprQI0-22fEdBzK5fqK5nBaaSh0a8aVlnUBnrbZh5NX6LfjbVP0jAn78Wo"/>
+</div>
+<div>
+<p class="font-bold text-sm text-[#dee5ff] line-clamp-1">1984</p>
+<p class="text-xs text-on-surface-variant">George Orwell</p>
+<p class="text-[10px] text-primary mt-1 font-bold uppercase">Issued</p>
+</div>
+</div>
+<!-- Recent Item 2 -->
+<div class="bg-surface-container p-4 rounded-2xl flex items-center gap-4 hover:bg-surface-bright transition-all">
+<div class="w-12 h-16 bg-surface-variant rounded-md overflow-hidden">
+<img alt="Book" class="w-full h-full object-cover" data-alt="stack of three hardcover books with colorful spines and gold lettering in soft natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR89o1LVLQ1HrybWIXsZEtso0CZxomaZbNwYsoihGXDypLnbehKciXtnrk79wr0PXsI9Uq1ttehuKD6RwA3tJfWvPC8ezCgHqfJit4L1LCDpU3PujII8yfeX75tfISZCTLfnA5hNVFntVx6zKPZ-SP0pg7aQEltDpElQgq--XbQ6RkKBuAo_f0-Wdzywb6e_0yVfubobevzzsxZlgzNVnm7pAVk-fWkvnoAFVGBMNhrV3TdE-yh9PpOdiCEiX59hTxhvpv6pgIb3c"/>
+</div>
+<div>
+<p class="font-bold text-sm text-[#dee5ff] line-clamp-1">The Great Gatsby</p>
+<p class="text-xs text-on-surface-variant">F. Scott Fitzgerald</p>
+<p class="text-[10px] text-secondary mt-1 font-bold uppercase">Returned</p>
+</div>
+</div>
+<!-- Recent Item 3 -->
+<div class="bg-surface-container p-4 rounded-2xl flex items-center gap-4 hover:bg-surface-bright transition-all opacity-50">
+<div class="w-12 h-16 bg-surface-variant rounded-md overflow-hidden flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant/30" data-icon="book">book</span>
+</div>
+<div>
+<p class="font-bold text-sm text-[#dee5ff] line-clamp-1">Brave New World</p>
+<p class="text-xs text-on-surface-variant">Aldous Huxley</p>
+<p class="text-[10px] text-on-surface-variant mt-1 font-bold uppercase">Scanning...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) - Contextual to Home/Dashboard only, suppressed here as per instructions if this is a sub-page, but adding it based on "Issue Book" primary intent if seen as a main dashboard feature. Keeping it simple. -->
+</body></html>

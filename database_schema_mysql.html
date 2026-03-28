@@ -1,0 +1,45 @@
+// ShelfSense MySQL Schema
+
+CREATE TABLE Users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('Student', 'Admin') DEFAULT 'Student',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    category VARCHAR(100),
+    quantity INT DEFAULT 1,
+    floor INT,
+    row INT,
+    rack INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Issues (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    book_id INT,
+    issue_date DATE NOT NULL,
+    return_date DATE,
+    fine DECIMAL(10, 2) DEFAULT 0.00,
+    status ENUM('Issued', 'Returned', 'Overdue') DEFAULT 'Issued',
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (book_id) REFERENCES Books(id)
+);
+
+CREATE TABLE Requests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    issue_id INT,
+    reason TEXT,
+    status ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (issue_id) REFERENCES Issues(id)
+);

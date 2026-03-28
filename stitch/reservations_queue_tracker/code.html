@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#58e7ab",
+              "secondary-fixed": "#69f6b8",
+              "surface-container-highest": "#192540",
+              "primary": "#a3a6ff",
+              "tertiary-fixed": "#ff8ed2",
+              "on-tertiary-fixed": "#3b002b",
+              "on-background": "#dee5ff",
+              "on-secondary": "#005a3c",
+              "secondary-container": "#006c49",
+              "surface-container-high": "#141f38",
+              "surface": "#060e20",
+              "surface-dim": "#060e20",
+              "on-error": "#490013",
+              "background": "#060e20",
+              "on-surface": "#dee5ff",
+              "error-dim": "#d73357",
+              "on-primary-fixed": "#000000",
+              "inverse-on-surface": "#4d556b",
+              "on-secondary-fixed-variant": "#006544",
+              "surface-variant": "#192540",
+              "on-surface-variant": "#a3aac4",
+              "on-tertiary": "#701455",
+              "on-tertiary-container": "#63054a",
+              "inverse-primary": "#494bd7",
+              "primary-fixed": "#9396ff",
+              "secondary": "#69f6b8",
+              "outline-variant": "#40485d",
+              "surface-container-low": "#091328",
+              "on-primary-container": "#0a0081",
+              "primary-fixed-dim": "#8387ff",
+              "inverse-surface": "#faf8ff",
+              "primary-container": "#9396ff",
+              "error-container": "#a70138",
+              "surface-container": "#0f1930",
+              "outline": "#6d758c",
+              "primary-dim": "#6063ee",
+              "error": "#ff6e84",
+              "surface-tint": "#a3a6ff",
+              "on-primary": "#0f00a4",
+              "on-secondary-fixed": "#00452d",
+              "surface-container-lowest": "#000000",
+              "on-secondary-container": "#e1ffec",
+              "on-error-container": "#ffb2b9",
+              "tertiary-dim": "#ef81c4",
+              "on-tertiary-fixed-variant": "#6e1354",
+              "tertiary-container": "#ff8ed2",
+              "tertiary": "#ffa5d9",
+              "tertiary-fixed-dim": "#ef81c4",
+              "secondary-dim": "#58e7ab",
+              "surface-bright": "#1f2b49",
+              "on-primary-fixed-variant": "#0e009d"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .loom-scroll-mask {
+            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+        }
+        .glass-panel {
+            background: rgba(25, 37, 64, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .jewel-button {
+            background: linear-gradient(135deg, #a3a6ff 0%, #6063ee 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#091328] relative z-10 flex flex-col py-6 no-border shadow-none">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-sm">auto_stories</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-[#dee5ff] tracking-tighter font-headline">Digital Curator</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Management System</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-[#dee5ff]/60 hover:text-[#dee5ff] py-3 px-4 ml-2 mr-4 flex items-center gap-3 transition-colors font-manrope font-semibold tracking-tight hover:bg-[#0f1930] hover:text-indigo-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="text-indigo-400 bg-[#1f2b49]/50 rounded-lg ml-2 mr-4 py-3 px-4 flex items-center gap-3 transition-all font-manrope font-semibold tracking-tight" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span>Books</span>
+</a>
+<a class="text-[#dee5ff]/60 hover:text-[#dee5ff] py-3 px-4 ml-2 mr-4 flex items-center gap-3 transition-colors font-manrope font-semibold tracking-tight hover:bg-[#0f1930] hover:text-indigo-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Profile</span>
+</a>
+<a class="text-[#dee5ff]/60 hover:text-[#dee5ff] py-3 px-4 ml-2 mr-4 flex items-center gap-3 transition-colors font-manrope font-semibold tracking-tight hover:bg-[#0f1930] hover:text-indigo-300" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span>Admin</span>
+</a>
+</nav>
+<div class="mt-auto px-4 space-y-1 border-t border-outline-variant/10 pt-6">
+<button class="w-full jewel-button text-on-primary font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 mb-6 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Add New Book</span>
+</button>
+<a class="text-[#dee5ff]/60 hover:text-[#dee5ff] py-3 px-4 ml-2 mr-4 flex items-center gap-3 transition-colors font-manrope font-semibold tracking-tight" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="text-[#dee5ff]/60 hover:text-[#dee5ff] py-3 px-4 ml-2 mr-4 flex items-center gap-3 transition-colors font-manrope font-semibold tracking-tight" href="#">
+<span class="material-symbols-outlined text-error">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-[#060e20]/80 backdrop-blur-xl z-40 flex justify-between items-center px-8 no-border border-b border-[#40485d]/20">
+<div class="flex items-center gap-8 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-outline" placeholder="Search the archive..." type="text"/>
+</div>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-colors font-inter text-sm font-medium" href="#">Analytics</a>
+<a class="text-indigo-400 font-bold border-b-2 border-indigo-500 pb-1 font-inter text-sm font-medium" href="#">Reservations</a>
+<a class="text-[#dee5ff]/70 hover:text-[#dee5ff] transition-colors font-inter text-sm font-medium" href="#">Overdue</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-[#1f2b49]/40 rounded-full p-2 transition-all active:opacity-80">
+<span class="material-symbols-outlined text-[#dee5ff]">notifications</span>
+</button>
+<button class="hover:bg-[#1f2b49]/40 rounded-full p-2 transition-all active:opacity-80">
+<span class="material-symbols-outlined text-[#dee5ff]">help_outline</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden bg-surface-container-high border border-outline-variant/30 ml-2">
+<img class="w-full h-full object-cover" data-alt="portrait of a young man with a serious expression and soft studio lighting on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZhDUTKgi26NIcJsXeXo0rB_lJev-0ho52jqhib91aST0KmOvIKPLiSfHUAAXp9iwbGOIoHTeZ33tDJA7MtiGNdAbGFypyo1gh-vD9kXwjkpe_La8rCCzgm4jySy6k5KsRVt2vGerS9hP2xGsMKbhNnZsvSnolrUEOqfDOeJVjfCOQz8KedUr0frz4nZ62QbnogXnk8rmNurl7sb8MtkNOLrseAuJQFMdSQXZIo1ebINiR9g_XHF-O_bf2ocyQnUuh5K-7POtQ6zs"/>
+</div>
+</div>
+</header>
+<div class="pt-24 px-12 pb-12">
+<!-- Header Section -->
+<div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="text-5xl font-extrabold font-headline tracking-tighter text-on-surface mb-2">Queue <span class="text-primary-dim">Intelligence</span></h2>
+<p class="text-on-surface-variant max-w-lg leading-relaxed">Secure your access to exclusive knowledge. Track your position in real-time as the curator prepares your selection.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl border-none shadow-none text-right">
+<span class="text-[10px] uppercase font-bold tracking-widest text-outline block mb-1">Average Wait</span>
+<span class="text-2xl font-headline font-bold text-secondary">4.2 Days</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border-none shadow-none text-right">
+<span class="text-[10px] uppercase font-bold tracking-widest text-outline block mb-1">Active Slots</span>
+<span class="text-2xl font-headline font-bold text-tertiary">3 / 5</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Active Reservations (Queue Tracker) -->
+<div class="lg:col-span-8 space-y-6">
+<h3 class="text-xs font-bold uppercase tracking-[0.2em] text-outline px-2">Active Queue</h3>
+<!-- Queue Card 1 -->
+<div class="bg-surface-container rounded-[1.5rem] p-6 flex flex-col md:flex-row gap-6 hover:bg-surface-bright transition-all group relative overflow-hidden">
+<div class="w-full md:w-32 h-44 rounded-lg overflow-hidden bg-black/40 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="minimalist book cover with abstract golden circles on a deep navy background titled THE SILENT VOID" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALgxJqhvnSR5XCUSaXPIzgsoo77711glF12Uw8wzzJAaCztvbgyfUTR2ToUMg-heEtuAAvKg69AU-11NcQooN8q37Dhor51Q9kUaf4Ak-a-2R6VLx4q0_LBjGBTrbiszXl2gRZGSJcEPzufP5xJ8DXQI1WE6WUTu64djnFVy84yzdwhl_9Vn-nQNqbVIyU5LS6EqGLG28PR9BKHquw9-HdysJqaSc_3d98DfPaq_HseTGg8-rLu9-L2cmdxCd2CIKYyZNmxchLiEg"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-secondary-container text-on-secondary-container mb-3">Priority Track</span>
+<h4 class="text-2xl font-headline font-bold leading-tight mb-1">The Architecture of Silence</h4>
+<p class="text-on-surface-variant font-medium">by Elena Vane • 2023</p>
+</div>
+<div class="text-right">
+<div class="text-4xl font-black font-headline text-primary opacity-40 group-hover:opacity-100 transition-opacity">02</div>
+<div class="text-[10px] font-bold uppercase tracking-tighter text-outline">Position</div>
+</div>
+</div>
+<div class="mt-6 space-y-4">
+<div class="w-full bg-surface-container-low h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[75%]"></div>
+</div>
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Est. 2 days left</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>1 person ahead</span>
+</div>
+</div>
+<button class="text-error-dim hover:text-error font-bold transition-colors text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">cancel</span>
+                                        Cancel Reservation
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Queue Card 2 -->
+<div class="bg-surface-container rounded-[1.5rem] p-6 flex flex-col md:flex-row gap-6 hover:bg-surface-bright transition-all group relative overflow-hidden">
+<div class="w-full md:w-32 h-44 rounded-lg overflow-hidden bg-black/40 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="old leather bound book with gold foil detailing in a dimly lit library atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6B0XCe8n50SA8_AAYSBvGRttAGmaXac8C0QOPN1FsT4gBbqr0hASlJn-7-lt9FL_cE3W6AKQhDmlQ8nCBZzqWYBDp6QcXqPur6IozoEYE0pBsoBMoqcdINy2J0NnpRpCdLFskMgoCkntUQU6Rnn7RtfW_WeRkc4RCpPnO5Ogh6S5OD25t53zmq999wOGqIGPemHOGmbYcT1oyo6BT4-b5RQd0vLKD3ruWO5mv9EApuqNR-E-AG8n8bt56YksKKNWzMr2NT8sxwnI"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-tertiary-container/20 text-tertiary mb-3">Standard Track</span>
+<h4 class="text-2xl font-headline font-bold leading-tight mb-1">Foundations of Digital Ethics</h4>
+<p class="text-on-surface-variant font-medium">by Dr. Marcus Thorne • 2021</p>
+</div>
+<div class="text-right">
+<div class="text-4xl font-black font-headline text-primary opacity-40 group-hover:opacity-100 transition-opacity">05</div>
+<div class="text-[10px] font-bold uppercase tracking-tighter text-outline">Position</div>
+</div>
+</div>
+<div class="mt-6 space-y-4">
+<div class="w-full bg-surface-container-low h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[20%]"></div>
+</div>
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Est. 12 days left</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>4 people ahead</span>
+</div>
+</div>
+<button class="text-error-dim hover:text-error font-bold transition-colors text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">cancel</span>
+                                        Cancel Reservation
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Browse & Reserve -->
+<div class="lg:col-span-4 space-y-8">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-[0.2em] text-outline px-2 mb-4">Highly Requested</h3>
+<div class="space-y-4 loom-scroll-mask py-4">
+<!-- Trending Book 1 -->
+<div class="bg-surface-container-low rounded-xl p-4 flex gap-4 hover:bg-surface-container transition-all">
+<div class="w-16 h-24 rounded-lg overflow-hidden bg-black/20 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="modern book cover featuring geometric lines and vibrant teal accents on a dark charcoal background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEwMmMT8D6jSqNgSmPG6iSqAJY_BFpB2F9YlCjLnEyuklbHXFDan8N0tPv3bZFPA8D-g-Ndv_mh_dV4CIJk3s2EeQJOSrmmvPspGJhHx8PjahIm2P_gybMaCKh7hiPmUVlGHlpDHX6lKFu-3IRUNPgyU9ktfp2-LxCdvhM985aotyTP6OtFXDf9gyxHuFvEUUcYZkP5Pf5GvgA9-GB2V9amox8FrlPGuTcaVyPn-NInZyfOgN6GogvtMRSq7nG9irBImLeWpcyqVM"/>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold truncate">Neural Networks &amp; Art</h5>
+<p class="text-xs text-on-surface-variant mb-3">Issued: 12 Copies</p>
+<button class="w-full border border-outline-variant/30 hover:border-primary/50 text-primary py-2 rounded-lg text-xs font-bold transition-all">
+                                        Reserve Slot
+                                    </button>
+</div>
+</div>
+<!-- Trending Book 2 -->
+<div class="bg-surface-container-low rounded-xl p-4 flex gap-4 hover:bg-surface-container transition-all">
+<div class="w-16 h-24 rounded-lg overflow-hidden bg-black/20 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="clean minimal book cover with a single white dot in the center of a black field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOs6n_3UTyuiLZHQeBBxZwBRxyX45jcByyYW8oGzOLN96nsHmGNBZ55TzzoXKZVKaz01oqy488n5Sd-4g9H7Lv8jRwUyYEr8uXvEYOEhjX1wXDcOhwajoR4ntiyM92CLIuvCXknfT0JD-aAprJYXwaPj2ohWzEhIYNBXKe3EKqhfxxp3BC1UTcCNhPjFSdtTe-APOx27h41kBdGtc1Mg5j3om6DLmUhPuIG3Yfbey-qAVRdw1zjDj8gqHPtKOs5YUs4SnYaj08ymY"/>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold truncate">The Minimalist Mindset</h5>
+<p class="text-xs text-on-surface-variant mb-3">Issued: 8 Copies</p>
+<button class="w-full border border-outline-variant/30 hover:border-primary/50 text-primary py-2 rounded-lg text-xs font-bold transition-all">
+                                        Reserve Slot
+                                    </button>
+</div>
+</div>
+<!-- Trending Book 3 -->
+<div class="bg-surface-container-low rounded-xl p-4 flex gap-4 hover:bg-surface-container transition-all">
+<div class="w-16 h-24 rounded-lg overflow-hidden bg-black/20 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="ethereal book cover with swirling purple and blue nebula textures and bold sans-serif typography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSjMtmyXvufR12_9HrypIK91G2ZsxmZz4TeFdhuVrYdOCCV-J4RcJ0yyB1s49Dw36a7YnRDfhM0n_1vMlz2_c23r09fXU8XZeDaN-DQfvvGdhxp2PFvzjgdNfSgqPZXN0oVaau2PtXSM-ovYWZbIINAyzVFYeqUY7237s5xQln8K6hlq770gkrcQgP6i-suhqZUKv-rUPhcjXp6GrtRh-7Ai6nJ6GkbkkQGmB0-LITWo89JkGOUEdvradCKsiwiFHv1GgO_iK1tCc"/>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold truncate">Quantum Sociology</h5>
+<p class="text-xs text-on-surface-variant mb-3">Issued: 4 Copies</p>
+<button class="w-full border border-outline-variant/30 hover:border-primary/50 text-primary py-2 rounded-lg text-xs font-bold transition-all">
+                                        Reserve Slot
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Panel -->
+<div class="glass-panel p-6 rounded-[1.5rem] border border-outline-variant/20">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary">verified</span>
+<h4 class="font-headline font-bold">Curator's Tip</h4>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                            Returning your current books 24 hours early boosts your <span class="text-secondary font-bold">Priority Score</span> by 15%, moving you faster through the queue.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Bento Grid Extra Info -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-8 rounded-3xl flex flex-col justify-between aspect-video md:aspect-auto">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">history_edu</span>
+<div>
+<h4 class="text-xl font-headline font-bold mb-2">History Log</h4>
+<p class="text-sm text-on-surface-variant">View your past readings and contributions to the archive.</p>
+</div>
+</div>
+<div class="bg-primary/10 border border-primary/20 p-8 rounded-3xl flex flex-col justify-between aspect-video md:aspect-auto">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">auto_awesome</span>
+<div>
+<h4 class="text-xl font-headline font-bold mb-2">Smart Pickup</h4>
+<p class="text-sm text-on-surface-variant">Available books can be collected from Locker 4B using your ID.</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-3xl flex flex-col justify-between aspect-video md:aspect-auto">
+<span class="material-symbols-outlined text-4xl text-tertiary mb-4">analytics</span>
+<div>
+<h4 class="text-xl font-headline font-bold mb-2">Supply Stats</h4>
+<p class="text-sm text-on-surface-variant">Currently 89% of the 'Design' category is in circulation.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
